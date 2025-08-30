@@ -152,94 +152,94 @@
 // // console.log(checkWinner(scoreDolphins, scoreKoalas));
 
 // Arrays
-const student1Grade = 85;
-const student2Grade = 92;
-const student3Grade = 78;
+// const student1Grade = 85;
+// const student2Grade = 92;
+// const student3Grade = 78;
 
-const grades = [85, 92, 78, 96, 88];
-console.log(grades);
+// const grades = [85, 92, 78, 96, 88];
+// console.log(grades);
 
-//Arrays - Creation and Access
-console.log("=== ARRAYS ===");
+// //Arrays - Creation and Access
+// console.log("=== ARRAYS ===");
 
-const friends = ["Michael", "Steven", "Peter"];
-console.log(friends);
+// const friends = ["Michael", "Steven", "Peter"];
+// console.log(friends);
 
-const mixed = ["Jonas", 27, true, friends];
-console.log(mixed);
+// const mixed = ["Jonas", 27, true, friends];
+// console.log(mixed);
 
-const yearsArr = new Array(1991, 1984, 2008, 2020);
-console.log(yearsArr);
+// const yearsArr = new Array(1991, 1984, 2008, 2020);
+// console.log(yearsArr);
 
-console.log(friends[0]);
-console.log(friends[1]);
-console.log(friends[2]); 
+// console.log(friends[0]);
+// console.log(friends[1]);
+// console.log(friends[2]); 
 
-console.log(friends.length); 
+// console.log(friends.length); 
 
-console.log(friends[friends.length - 1]);
+// console.log(friends[friends.length - 1]);
 
-friends[1] = "Jay";
-console.log(friends); 
+// friends[1] = "Jay";
+// console.log(friends); 
 
-const calcAge = function (birthYear) {
-  return 2025 - birthYear;
-}
+// const calcAge = function (birthYear) {
+//   return 2025 - birthYear;
+// }
 
-const ages = [calcAge(1991), calcAge(1967), calcAge(2002)];
-console.log(ages);
+// const ages = [calcAge(1991), calcAge(1967), calcAge(2002)];
+// console.log(ages);
 
-ages[1] = calcAge(2012);
-console.log(ages);
+// ages[1] = calcAge(2012);
+// console.log(ages);
 
-// Array Methods
+// // Array Methods
 
-const newLength = friends.push("Jay");
-console.log(friends); 
-console.log(newLength); 
+// const newLength = friends.push("Jay");
+// console.log(friends); 
+// console.log(newLength); 
 
-friends.unshift("John");
-console.log(friends); 
+// friends.unshift("John");
+// console.log(friends); 
 
-const popped = friends.pop();
-console.log(popped);
-console.log(friends); 
-
-
-const shifted = friends.shift();
-console.log(shifted);
-console.log(friends);
-
-console.log(friends.indexOf("Steven"));
-console.log(friends.indexOf("Bob"));  
-
-console.log(friends.includes("Steven"));
-console.log(friends.includes("Bob"));
+// const popped = friends.pop();
+// console.log(popped);
+// console.log(friends); 
 
 
-friends.forEach(function (friend, index) {
-  console.log(`${index}: ${friend}`);
-});
+// const shifted = friends.shift();
+// console.log(shifted);
+// console.log(friends);
 
-friends.forEach((friend, index) => {
-  console.log(`Friend ${index + 1}: ${friend}`);
-});
+// console.log(friends.indexOf("Steven"));
+// console.log(friends.indexOf("Bob"));  
 
-const grades1= [85, 92, 78, 96, 88, 74];
-let total = 0;
-
-for (let i = 0; i < grades.length; i++) {
-  total += grades[i];
-}
-const average = total / grades.length;
-console.log(`Average grade: ${average}`);
+// console.log(friends.includes("Steven"));
+// console.log(friends.includes("Bob"));
 
 
-let passedCount = 0;
-grades.forEach((grade) => {
-  if (grade >= 70) passedCount++;
-});
-console.log(`${passedCount} out of ${grades.length} students passed`);
+// friends.forEach(function (friend, index) {
+//   console.log(`${index}: ${friend}`);
+// });
+
+// friends.forEach((friend, index) => {
+//   console.log(`Friend ${index + 1}: ${friend}`);
+// });
+
+// const grades1= [85, 92, 78, 96, 88, 74];
+// let total = 0;
+
+// for (let i = 0; i < grades.length; i++) {
+//   total += grades[i];
+// }
+// const average = total / grades.length;
+// console.log(`Average grade: ${average}`);
+
+
+// let passedCount = 0;
+// grades.forEach((grade) => {
+//   if (grade >= 70) passedCount++;
+// });
+// console.log(`${passedCount} out of ${grades.length} students passed`);
 
 // ////////////////////////////////////
 // // Coding Challenge #2 - Student Grade Manager
@@ -284,53 +284,358 @@ console.log(`${passedCount} out of ${grades.length} students passed`);
 
 
 
-function calculateAverage(grades) {
-  let sum = 0;
-  for (let i = 0; i < grades.length; i++) {
-    sum += grades[i];
-  }
-  return sum / grades.length;
-}
+// function calculateAverage(grades) {
+//   let sum = 0;
+//   for (let i = 0; i < grades.length; i++) {
+//     sum += grades[i];
+//   }
+//   return sum / grades.length;
+// }
 
-function findHighestGrade(grades) {
-  let highest = grades[0];
-  for (let i = 1; i < grades.length; i++) {
-    if (grades[i] > highest) {
-      highest = grades[i];
+// function findHighestGrade(grades) {
+//   let highest = grades[0];
+//   for (let i = 1; i < grades.length; i++) {
+//     if (grades[i] > highest) {
+//       highest = grades[i];
+//     }
+//   }
+//   return highest;
+// }
+
+// function findLowestGrade(grades) {
+//   let lowest = grades[0];
+//   for (let i = 1; i < grades.length; i++) {
+//     if (grades[i] < lowest) {
+//       lowest = grades[i];
+//     }
+//   }
+//   return lowest;
+// }
+
+// function countPassing(grades, passingGrade) {
+//   let count = 0;
+//   for (let i = 0; i < grades.length; i++) {
+//     if (grades[i] >= passingGrade) {
+//       count++;
+//     }
+//   }
+//   return count;
+// }
+
+// const reportGrades = [78, 85, 92, 67, 88, 95, 73, 82];
+
+// const average1 = calculateAverage(reportGrades);
+// const highest = findHighestGrade(reportGrades);
+// const lowest = findLowestGrade(reportGrades);
+// const passing = countPassing(reportGrades, 70);
+
+// console.log("=== GRADE REPORT ===");
+// console.log(`Average: ${average1.toFixed(2)}`);
+// console.log(`Highest: ${highest}`);
+// console.log(`Lowest: ${lowest}`);
+// console.log(`Passing students: ${passing} out of ${reportGrades.length}`);
+
+// The Array Limitation Problem
+
+const jonasArray = [
+  "Jonas",
+  "Schmedtmann",
+  2037 - 1991,
+  "teacher",
+  ["Michael", "Peter", "Steven"],
+];
+
+console.log(jonasArray[0]); 
+console.log(jonasArray[1]);
+console.log(jonasArray[2]);
+
+// Basic Object Creation
+const jonas = {
+  firstName: "Jonas", 
+  lastName: "Schmedtmann", 
+  age: 2037 - 1991, 
+  job: "teacher", 
+  friends: ["Michael", "Peter", "Steven"], 
+};
+console.log(jonas);
+
+// The Same Data - Arrays vs Objects
+const jonasArray2 = [
+  "Jonas",
+  "Schmedtmann",
+  46,
+  "teacher",
+  ["Michael", "Peter", "Steven"],
+];
+
+// Dot Notation
+console.log(jonas.firstName); 
+console.log(jonas.lastName); 
+console.log(jonas.age); 
+console.log(jonas.job); 
+console.log(jonas.friends);
+
+// Bracket Notation
+console.log(jonas["firstName"]); 
+console.log(jonas["lastName"]);
+console.log(jonas["age"]);
+
+// Bracket Notation's Superpower
+const nameKey = "Name";
+console.log(jonas["first" + nameKey]);
+console.log(jonas["last" + nameKey]);
+
+// Both notations work for modification
+jonas.job = "programmer";
+jonas["age"] = 35;
+console.log(jonas);
+
+// Objects can grow - add properties after creation
+jonas.location = "Portugal";
+jonas["twitter"] = "@jonasschmedtman";
+jonas.hasDriversLicense = true;
+console.log(jonas);
+
+// Create your own objects:
+// 1. Create a 'book' object with title, author, pages, and isRead properties
+// 2. Create a 'playlist' object with name, creator, songs array, and genre
+// 3. Access and log different properties using both dot and bracket notation
+// 4. Add a new property to each object
+// 5. Modify an existing property in each object
+
+// Your code here...
+
+// Example structure:
+// const book = {
+//   // Your properties here
+// };
+
+// const playlist = {
+//   // Your properties here
+// };
+
+// // Practice accessing properties
+// console.log(book.title);
+// console.log(playlist["creator"]);
+
+// // Add new properties
+
+// // Modify existing properties
+
+const book = {
+  title: "The Great Gatsby",
+  author: "F. Scott Fitzgerald",
+  pages: 180,
+  isRead: false,
+};
+
+book.genre = "Classic";
+
+book.isRead = true;
+
+const playlist = {
+  name: "Chill Vibes",
+  creator: "Alice",
+  songs: ["Sunrise", "Dreamscape", "Night Drive"],
+  genre: "Lo-fi",
+};
+
+
+playlist.yearCreated = 2024;
+
+playlist.genre = "Chillhop";
+
+console.log(book.title);
+console.log(playlist["creator"]);
+
+
+// Ordered, indexed data - think lists
+const listOfYears = [1991, 1984, 2008, 2020];
+const shoppingList = ["apples", "bananas", "milk", "bread"];
+const testScores = [85, 92, 78, 96];
+
+// Named, descriptive data - think entities
+const person = {
+  name: "Jonas",
+  age: 46,
+  occupation: "teacher",
+};
+
+const car = {
+  brand: "Toyota",
+  model: "Camry",
+  year: 2020,
+  color: "blue",
+};
+
+// Objects can contain arrays, arrays can contain objects
+const student = {
+  name: "Sarah",
+  grades: [85, 92, 78], 
+  address: {
+
+    street: "123 Main St",
+    city: "New York",
+  },
+};
+
+console.log(student.grades[0]);
+console.log(student.address.city);
+
+// Object Methods
+
+const jonas1 = {
+  firstName: "Jonas",
+  lastName: "Schmedtmann",
+  birthYear: 1991,
+  job: "teacher",
+  friends: ["Michael", "Peter", "Steven"],
+  hasDriversLicense: true,
+
+  calcAge: function (birthYear) {
+    return 2037 - birthYear;
+  },
+};
+
+console.log(jonas1.calcAge(1991)); 
+console.log(jonas1.calcAge(jonas1.birthYear)); 
+
+// "This"
+const jonasImproved = {
+  firstName: "Jonas",
+  lastName: "Schmedtmann",
+  birthYear: 1991,
+  job: "teacher",
+  friends: ["Michael", "Peter", "Steven"],
+  hasDriversLicense: true,
+
+  calcAge: function () {
+    console.log(this); 
+    return 2037 - this.birthYear;
+  },
+};
+
+console.log(jonasImproved.calcAge()); 
+
+// Advanced: Storing Calculated Values
+const jonasAdvanced = {
+  firstName: "Jonas",
+  lastName: "Schmedtmann",
+  birthYear: 1991,
+  job: "teacher",
+  friends: ["Michael", "Peter", "Steven"],
+  hasDriversLicense: true,
+
+  calcAge: function () {
+    this.age = 2037 - this.birthYear; 
+    return this.age;
+  },
+
+  getSummary: function () {
+    return `${this.firstName} is a ${this.calcAge()}-year old ${
+      this.job
+    }, and he has ${this.hasDriversLicense ? "a" : "no"} driver's license.`;
+  },
+};
+
+console.log(jonasAdvanced.calcAge());
+console.log(jonasAdvanced.age); 
+console.log(jonasAdvanced.getSummary());
+
+// Create a 'calculator' object:
+// 1. Properties: num1, num2, operator
+// 2. Methods: add(), subtract(), multiply(), divide()
+// 3. Method: calculate() that uses the operator to perform the right operation
+// 4. Method: getResult() that returns a formatted string
+// 5. Use 'this' to access the object's own properties
+
+const calculator = {
+  num1: 75,
+  num2: 33,
+  operator: "-",
+
+  add: function () {
+    return this.num1 + this.num2;
+  },
+
+  subtract: function () {
+    return this.num1 - this.num2;
+  },
+
+  multiply: function () {
+    return this.num1 * this.num2;
+  },
+
+  divide: function () {
+    return this.num2 !== 0 ? this.num1 / this.num2 : "Error: Division by zero";
+  },
+
+  calculate: function () {
+    switch (this.operator) {
+      case "+":
+        return this.add();
+      case "-":
+        return this.subtract();
+      case "*":
+        return this.multiply();
+      case "/":
+        return this.divide();
+      default:
+        return "Invalid operator";
     }
-  }
-  return highest;
-}
+  },
 
-function findLowestGrade(grades) {
-  let lowest = grades[0];
-  for (let i = 1; i < grades.length; i++) {
-    if (grades[i] < lowest) {
-      lowest = grades[i];
-    }
-  }
-  return lowest;
-}
+  getResult: function () {
+    const result = this.calculate();
+    return `Result of ${this.num1} ${this.operator} ${this.num2} = ${result}`;
+  },
+};
 
-function countPassing(grades, passingGrade) {
-  let count = 0;
-  for (let i = 0; i < grades.length; i++) {
-    if (grades[i] >= passingGrade) {
-      count++;
-    }
-  }
-  return count;
-}
+console.log(calculator.calculate());
+console.log(calculator.getResult());
 
-const reportGrades = [78, 85, 92, 67, 88, 95, 73, 82];
+// Coding Challenge #3 - User Profile System
 
-const average1 = calculateAverage(reportGrades);
-const highest = findHighestGrade(reportGrades);
-const lowest = findLowestGrade(reportGrades);
-const passing = countPassing(reportGrades, 70);
+const user = {
+  firstName: "Sarah",
+  lastName: "Johnson",
+  birthYear: 1995,
+  location: "New York",
+  interests: ["photography", "travel", "coding"],
+  friends: [
+    { name: "Michael", status: "active" },
+    { name: "Emma", status: "inactive" },
+    { name: "David", status: "active" },
+  ],
+  isActive: true,
 
-console.log("=== GRADE REPORT ===");
-console.log(`Average: ${average1.toFixed(2)}`);
-console.log(`Highest: ${highest}`);
-console.log(`Lowest: ${lowest}`);
-console.log(`Passing students: ${passing} out of ${reportGrades.length}`);
+  calcAge: function () {
+    return new Date().getFullYear() - this.birthYear;
+  },
+
+  addFriend: function (name, status = "active") {
+    this.friends.push({ name, status });
+  },
+
+  getActiveFriends: function () {
+    return this.friends.filter(friend => friend.status === "active");
+  },
+
+  toggleStatus: function () {
+    this.isActive = !this.isActive;
+  },
+
+  getSummary: function () {
+    return `${this.firstName} ${this.lastName} (${this.calcAge()} years old) from ${this.location}.\n` +
+      `Interests: ${this.interests.join(", ")}\n` +
+      `Active friends: ${this.getActiveFriends().map(f => f.name).join(", ") || "None"}\n` +
+      `Status: ${this.isActive ? "Active" : "Inactive"}`;
+  },
+};
+
+
+console.log(user.getSummary());
+user.addFriend("Alex", "active");
+user.toggleStatus();
+console.log(`\nAfter updates:`);
+console.log(user.getSummary());
