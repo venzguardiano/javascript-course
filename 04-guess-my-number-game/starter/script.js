@@ -56,6 +56,7 @@ console.log('Game active:', gameActive);
 // Base Game Logic
 document.querySelector('.check').addEventListener('click', function () {
   console.log('Check button clicked!');
+
   const guess = Number(document.querySelector('.guess').value);
   console.log('Player guessed:', guess);
 
@@ -63,11 +64,42 @@ document.querySelector('.check').addEventListener('click', function () {
     console.log('Correct guess!');
     document.querySelector('.message').textContent = '🎉Correct Number!';
     document.querySelector('.number').textContent = secretNumber;
+
+    if (score > highscore) {
+      document.querySelector('.highscore').textContent = highscore;
+      // document.querySelector('.message').textContent = '🎉You have won!';
+    }
+    document.querySelector('.guess').disbaled = true;
+    document.querySelector('.check').disbaled = true;
   } else if (guess > secretNumber) {
     console.log('Too high!');
-    document.querySelector('.message').textContent = 'Too high!';
+    document.querySelector('.message').textContent = '📈Too high!';
+    score--;
+    document.querySelector('.score').textContent = score;
   } else if (guess < secretNumber) {
     console.log('Too low!');
-    document.querySelector('.message').textContent = 'Too low!';
+    document.querySelector('.message').textContent = '📉Too low!';
+    score--;
+    document.querySelector('.score').textContent = score;
   }
+  if (score < 1) {
+    document.querySelector('.message').textContent = '💥 You lost!';
+    document.querySelector('.number').textContent = secretNumber;
+    document.querySelector('.guess').disabled = true;
+    document.querySelector('.check').disabled = true;
+  }
+});
+
+document.querySelector('.again').addEventListener('click', function () {
+  console.log('Working!');
+
+  score = 20;
+  secretNumber = Math.trunc(Math.random() * 20) + 1;
+  console.log('Your Secret Number After Restart', secretNumber);
+  document.querySelector('.message').textContent = 'Start guessing...';
+  document.querySelector('.number').textContent = '?';
+  document.querySelector('.score').textContent = score;
+  document.querySelector('.guess').value = '';
+  document.querySelector('.guess').disabled = false;
+  document.querySelector('.check').disabled = false;
 });
