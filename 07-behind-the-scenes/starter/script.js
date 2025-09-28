@@ -102,21 +102,185 @@
 // const apiUrl = 'https://example.com';
 // console.log(apiUrl);
 
-let title = 'Behind the Scenes';
+// let title = 'Behind the Scenes';
 
-function outer() {
-  const label = 'outer';
-  function inner() {
-    console.log('scope:', label);
-  }
-  inner();
-}
-outer();
+// function outer() {
+//   const label = 'outer';
+//   function inner() {
+//     console.log('scope:', label);
+//   }
+//   inner();
+// }
+// outer();
 
-function one() {
-  two();
+// function one() {
+//   two();
+// }
+// function two() {
+//   console.log('stack: two');
+// }
+// one();
+
+const person = {
+  name: 'Jonas',
+  greet: function () {
+    console.log(`Hello, I am ${this.name}`);
+  },
+};
+
+person.greet();
+
+const person1 = {
+  name: 'Jonas',
+  greet: function () {
+    console.log(`Hello, I am ${this.name}`);
+  },
+};
+
+const anotherPerson = { name: 'Sarah' };
+anotherPerson.greet = person.greet;
+anotherPerson.greet();
+
+const greetFunction = person.greet;
+greetFunction();
+
+const button = document.querySelector('button');
+if (button) {
+  button.addEventListener('click', person.greet.bind(person));
+  button.addEventListener('click', () => person.greet());
+  button.addEventListener('click', person.greet.bind(person));
 }
-function two() {
-  console.log('stack: two');
-}
-one();
+
+const obj = {
+  name: 'Object',
+
+  regularMethod: function () {
+    console.log('Regular:', this.name);
+  },
+
+  arrowMethod: () => {
+    console.log('Arrow:', this.name);
+  },
+};
+
+obj.regularMethod();
+obj.arrowMethod();
+
+const quiz = {
+  name: 'Quiz Object',
+  regularMethod() {
+    console.log('Regular:', this.name);
+  },
+  arrowMethod: () => {
+    console.log('Arrow:', this.name);
+  },
+};
+
+quiz.regularMethod();
+quiz.arrowMethod();
+
+const timer = {
+  name: 'Timer',
+
+  start: function () {
+    console.log(`${this.name} starting...`);
+    const self = this;
+
+    setTimeout(function () {
+      console.log(`${self.name} finished`);
+    }, 1000);
+  },
+
+  startModern: function () {
+    console.log(`${this.name} starting modern...`);
+
+    setTimeout(() => {
+      console.log(`${this.name} finished modern`);
+    }, 1500);
+  },
+};
+
+timer.start();
+timer.startModern();
+
+const user = {
+  name: 'Alice',
+  hobbies: ['reading', 'coding', 'gaming'],
+
+  printHobbiesBad() {
+    this.hobbies.forEach(hobby => {
+      console.log(`${this.name} likes ${hobby}`);
+    });
+  },
+
+  printHobbiesGood() {
+    this.hobbies.forEach(hobby => {
+      console.log(`${this.name} likes ${hobby}`); // this.name works!
+    });
+  },
+};
+
+user.printHobbiesBad();
+user.printHobbiesGood();
+
+const functionTypes = {
+  regularFunction: function () {
+    console.log('Arguments length:', arguments.length);
+    console.log('First argument:', arguments[0]);
+  },
+
+  arrowFunction: () => {
+    console.log('Arrow function called');
+  },
+
+  modernFunction: (...args) => {
+    console.log('Args length:', args.length);
+    console.log('First arg:', args[0]);
+  },
+};
+
+functionTypes.regularFunction('hello', 'world');
+functionTypes.arrowFunction('test');
+functionTypes.modernFunction('modern', 'approach');
+
+const userCard = {
+  name: 'Sarah',
+
+  setupEvents() {
+    console.log('Event setup for:', this.name);
+  },
+};
+
+userCard.setupEvents();
+
+const calculator = {
+  numbers: [1, 2, 3, 4, 5],
+  multiplier: 2,
+
+  processNumbers() {
+    return this.numbers.map(num => num * this.multiplier);
+  },
+};
+
+console.log('Processed numbers:', calculator.processNumbers());
+
+const myTimer = {
+  name: 'My Timer',
+
+  startCountdown() {
+    console.log(`${this.name} starting countdown...`);
+
+    let count = 5;
+    const intervalId = setInterval(() => {
+      if (count > 0) {
+        console.log(count);
+        count--;
+      } else {
+        console.log("Time's up!");
+        clearInterval(intervalId);
+      }
+    }, 1000);
+  },
+};
+
+myTimer.startCountdown();
