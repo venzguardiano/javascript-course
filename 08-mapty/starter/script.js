@@ -1,4 +1,5 @@
 'use strict';
+// 1st Hour
 console.log('=== MAPTY: WORKOUT TRACKING APPLICATION ===');
 
 class Workout {
@@ -93,3 +94,175 @@ run1.click();
 cycling1.click();
 console.log('Run clicks:', run1.clicks);
 console.log('Cycling clicks:', cycling1.clicks);
+
+// 2nd Hour
+// if (navigator.geolocation) {
+//   navigator.geolocation.getCurrentPosition(
+//     function (position) {
+//       const { latitude } = position.coords;
+//       const { longitude } = position.coords;
+//       console.log(`User location: ${latitude}, ${longitude}`);
+//     },
+//     function () {
+//       alert('Could not get your position');
+//     }
+//   );
+// }
+
+// console.log('=== TESTING GEOLOCATION API ===');
+
+// function getPosition() {
+//   if (navigator.geolocation) {
+//     console.log('🔍 Requesting user location...');
+//     navigator.geolocation.getCurrentPosition(
+//       loadMap,
+//       function (error) {
+//         console.error('Geolocation error:', error);
+
+//         let message = 'Could not get your position. ';
+
+//         switch (error.code) {
+//           case error.PERMISSION_DENIED:
+//             message +=
+//               'Location access was denied. Please enable location services and refresh the page.';
+//             break;
+//           case error.POSITION_UNAVAILABLE:
+//             message += 'Location information is unavailable.';
+//             break;
+//           case error.TIMEOUT:
+//             message += 'Location request timed out.';
+//             break;
+//           default:
+//             message += 'An unknown error occurred.';
+//             break;
+//         }
+
+//         alert(`📍 ${message}`);
+//         loadDefaultMap();
+//       },
+//       {
+//         timeout: 10000,
+//         enableHighAccuracy: true,
+//         maximumAge: 600000,
+//       }
+//     );
+//   } else {
+//     alert('❌ Geolocation is not supported by this browser');
+//     loadDefaultMap();
+//   }
+// }
+
+// // Test the geolocation
+// getPosition();
+
+// // LEAFLET MAP INTEGRATION
+// function loadMap(position) {
+//   const { latitude, longitude } = position.coords;
+//   console.log(`Loading map at coordinates: ${latitude}, ${longitude}`);
+
+//   // array in leaflet format
+//   const coords = [latitude, longitude];
+
+//   const map = L.map('map').setView(coords, 13);
+
+//   L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+//     attribution:
+//       '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+//   }).addTo(map);
+
+//   L.marker(coords).addTo(map).bindPopup('You are here!').openPopup();
+
+//   console.log('Map loaded successfully at user location');
+
+//   map.on('click', function (mapEvent) {
+//     console.log('Map Clicked at:', mapEvent.latlng);
+
+//     const { lat, lng } = mapEvent.latlng;
+//     console.log('Map Clicked at: $(lat.toFixed(4) )<br>Lng: $(lng.toFixed(4))');
+//     console.openPopup();
+//   });
+//   console.log('Map loaded successfully at user location');
+// }
+
+// function loadDefaultMap() {
+//   console.log('Loading default map location (London)');
+
+//   // use the default coordinates
+//   const defaultCoords = [51.5074, -0.1278];
+
+//   const map = L.map('map').setView(defaultCoords, 13);
+
+//   L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+//     attribution:
+//       '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+//   }).addTo(map);
+
+//   console.log('Default map loaded successfully');
+
+//   map.on('click', function (mapEvent) {
+//     console.log('Map Clicked at:', mapEvent.latlng);
+
+//     const { lat, lng } = mapEvent.latlng;
+//     console.log('Map Clicked at: $(lat.toFixed(4) )<br>Lng: $(lng.toFixed(4))');
+
+//     L.marker([lat, lng])
+//       .addTo(map)
+//       .bindPopup('Workout location<br>Lat: $(lat.toFixed(4) )<br>Lng')
+//       .openPopup();
+//   });
+//   console.log('Map loaded successfully at user location');
+// }
+
+// Enhanced App class with better click handling
+class App {
+  #map;
+  #mapZoomLevel = 13;
+  #mapEvent;
+  #workouts = [];
+
+  constructor() {
+    this._getPosition();
+  }
+
+  _getPosition() {
+    if (navigator.geolocation)
+      navigator.geolocation.getCurrentPosition(
+        this._loadMap.bind(this),
+        function () {
+          alert('Could not get your position');
+        }
+      );
+  }
+
+  _loadMap(position) {
+    const { latitude } = position.coords;
+    const { longitude } = position.coords;
+    const coords = [latitude, longitude];
+
+    this.#map = L.map('map').setView(coords, this.#mapZoomLevel);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+      attribution:
+        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    }).addTo(this.#map);
+
+    // Add click event listener
+    this.#map.on('click', this._showForm.bind(this));
+  }
+
+  _showForm(mapE) {
+    this.#mapEvent = mapE;
+    const { lat, lng } = mapE.latlng;
+
+    console.log(`Map clicked at: ${lat.toFixed(4)}, ${lng.toFixed(4)}`);
+
+    // Add a temporary marker to show where user clicked
+    L.marker([lat, lng])
+      .addTo(this.#map)
+      .bindPopup(`Clicked here: ${lat.toFixed(4)}, ${lng.toFixed(4)}`)
+      .openPopup();
+  }
+}
+
+// Create the app
+const app = new App();
